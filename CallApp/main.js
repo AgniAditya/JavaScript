@@ -162,5 +162,3 @@ downBtn.addEventListener('click',() => {
         stack.appendChild(firstChild)
     }
 })
-
-console.log(stack)
