@@ -5,7 +5,14 @@ const bio = document.querySelector("#bio")
 const imageUrl = document.querySelector("#photo")
 
 const userManager = {
-    users: [],
+    users: [
+        {
+            name: "Aditya Agnihotri",
+            role: "Software Engineer",
+            bio: "B.Tech Computer Science student with strong problem-solving skills (600+ DSA problems solved) and hands-on experience building AI-powered full-stack and automation systems. Interested in Backend Engineering, Systems Design, and AI-driven software applications.",
+            imageUrl: "https://i.postimg.cc/d3G0SnH8/Portfolio-Image-final.png"
+        }
+    ],
     init: function() {
         this.renderAllUsers();
         form.addEventListener("submit", (e) => {
@@ -49,10 +56,21 @@ const userManager = {
         bio.textContent = user.bio
         card.appendChild(bio)
 
+        const remove = document.createElement("button")
+        remove.textContent = "remove"
+        remove.className = "w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition shadow-lg"
+        remove.onclick = () => this.removeUser(user)
+        card.appendChild(remove)
+
         document.querySelector(".users").appendChild(card)
     },
     renderAllUsers: function() {
+        document.querySelector(".users").innerHTML = "";
         this.users.forEach((user) => this.renderUser(user))
+    },
+    removeUser: function(removedUser) {
+        this.users = this.users.filter((user) => user !== removedUser)
+        this.renderAllUsers();
     }
 }
 
