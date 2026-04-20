@@ -1,16 +1,22 @@
 const container = document.querySelector(".container");
 const input = document.querySelector('input');
+const loading = document.querySelector(".loading");
 
 function getUsers(amount = 3){
+    loading.className = "text-center text-gray-700 text-lg font-medium"
+    container.innerHTML = "";
+    loading.textContent = "Loading..."
+
     fetch(`https://randomuser.me/api/?results=${amount}`)
     .then(rawData => rawData.json())
     .then((users) => {
-        container.innerHTML = "";
+        loading.className = "hidden"
         users.results.forEach((user) => {
             showUser(user)
         });
     })
     .catch((err) => {
+        loading.textContent = "failed to get users"
         console.log(err)
     })
 }
