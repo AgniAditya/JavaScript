@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            font-size: 120px;
+        }
+        .container{
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .spacer{
+            height: 600px;
+        }
+
+        .lazy-img{
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 30px 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .lazy-img.loaded{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lazy loading Images with IntersectionObserver</h1>
+
+    <div class="container">
+        <div class="spacer"></div>
+        
+        <img data-src="image1.avif" class="lazy-img" alt="Image 1">
+
+        <div class="spacer"></div>
+
+        <img data-src="image2.avif" class="lazy-img" alt="Image 2">
+
+        <div class="spacer"></div>
+
+        <img data-src="image3.jpg" class="lazy-img" alt="Image 3">
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
